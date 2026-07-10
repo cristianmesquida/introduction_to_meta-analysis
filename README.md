@@ -2,12 +2,12 @@
 
 This repository contains the teaching materials for the **Introduction to Meta-analysis** lecture in the Metascience course.
 
-The lecture slides are available here: [**Introduction to Meta-analysis lecture**](https://cristianmesquida.github.io/introduction_to_meta-analysis/)
+The lecture slides are available here: [**Introduction to Meta-analysis**](https://cristianmesquida.github.io/introduction_to_meta-analysis/)
 
 ## Repository structure
 
 ```text
-p-values_and_bayes/
+introduction_to_meta-analysis/
 ├── README.md                  # Repository overview and links
 ├── index.qmd                  # Quarto source for the slides
 ├── index.html                 # Rendered slides
