@@ -23,6 +23,14 @@ library(ggplot2)
 dat <- dat.baskerville2012
 ```
 
+# Scan QR code for slides
+
+<div style="text-align: center;">
+
+![](images/qr_code.png){width="400"}
+
+</div>
+
 # Lecture objective
 
 By the end of this lecture, you should be able to interpret:
