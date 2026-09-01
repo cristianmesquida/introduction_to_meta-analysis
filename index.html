@@ -10,6 +10,7 @@
   <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Cristian Mesquida">
+  <meta name="dcterms.date" content="2026-02-09">
   <title>Introduction to Meta-analysis and Bias-detection tests</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -231,7 +232,19 @@ Cristian Mesquida
     </div>
 </div>
 
+  <p class="date">2026-02-09</p>
 </section>
+<section id="lecture-objective" class="title-slide slide level1 center">
+<h1>Lecture objective</h1>
+<p>By the end of this lecture, you should be able to interpret:</p>
+<ul>
+<li><p>Meta-analysis results</p></li>
+<li><p>Between-study heterogeneity</p></li>
+<li><p>Subgroup/Meta-regression analysis</p></li>
+<li><p>Bias-detection tests</p></li>
+</ul>
+</section>
+
 <section>
 <section id="the-research-question" class="title-slide slide level1 center">
 <h1>The Research Question</h1>
@@ -241,8 +254,9 @@ Cristian Mesquida
 <h2>What is your research question?</h2>
 <ul>
 <li><p>Suppose you are a researcher working for a <strong>government ministry</strong></p></li>
-<li><p>You need to gather evidence to make an informed decision about the e<strong>fficacy of an intervention</strong></p></li>
+<li><p>You need to gather evidence to make an informed decision about the <strong>efficacy of an intervention</strong></p></li>
 <li><p>You conduct a <strong>systematic search of the published literature</strong> to identify all relevant studies</p></li>
+<li><p>But…which ones?</p></li>
 </ul>
 </section>
 <section id="which-studies-and-effect-size-should-we-select" class="slide level2">
@@ -279,14 +293,7 @@ Cristian Mesquida
 <li class="fragment"><p><strong>Intervention</strong>: What kind of intervention do studies have to examine?</p></li>
 <li class="fragment"><p><strong>Comparator</strong>: What kind of control group do studies have to use? A control group receiving a placebo? Waitlists? Another intervention? Nothing at all?</p></li>
 <li class="fragment"><p><strong>Outcome</strong>: What kind of outcome do studies have to measure? Systolic blood pressure? Dyastolic blood pressure? Mortality?</p></li>
-<li class="fragment"><p><strong>Study design:</strong> Which study designs are eligible?</p>
-<ul>
-<li class="fragment">Randomized Controlled Trials (RCTs), pre-post, etc.</li>
-</ul>
-<!-- -->
-<ul>
-<li class="fragment">Different study designs may require&nbsp;<strong>different effect-size calculations</strong></li>
-</ul></li>
+<li class="fragment"><p><strong>Study design:</strong> Which study designs are eligible? Randomized Controlled Trials (RCTs), pre-post, etc. Different study designs require <strong>different effect-size calculations</strong></p></li>
 </ul>
 </section></section>
 <section>
@@ -297,26 +304,29 @@ Cristian Mesquida
 <section id="what-do-we-need-to-conduct-a-meta-analysis" class="slide level2">
 <h2>What do we need to conduct a meta-analysis?</h2>
 <ul>
-<li><p>Effect size for each study</p>
+<li><p>Effect size (or the information to compute it) for each study</p>
 <ul>
-<li><p>Standardized (e.g., Cohen’s <span class="math inline">\(d\)</span> ,<span class="math inline">\(r\)</span></p></li>
+<li><p>Standardized (e.g., Cohen’s <span class="math inline">\(d\)</span> or Pearson’s <span class="math inline">\(r\)</span>)</p></li>
 <li><p>Non-standardized (mean difference, odds ratio (<span class="math inline">\(OR\)</span>)</p></li>
 </ul></li>
 <li><p>Sampling variance (or standard error) of each effect size</p></li>
-<li><p>The formulas for calcualting effect sizes and their variances depend on:</p>
+</ul>
+</section>
+<section id="types-of-effect-sizes" class="slide level2">
+<h2>Types of effect sizes</h2>
 <ul>
-<li><p>The type of effect size</p></li>
-<li><p>The study design (e.g., within-subject design, between-subject, split-plot)</p></li>
+<li><p>The formulas for calculating effect sizes and their variances depend on:</p>
+<ul>
+<li>The type of effect size: <span class="math inline">\(d_s\)</span>, <span class="math inline">\(d_z\)</span>, <span class="math inline">\(r\)</span>, etc.</li>
+<li>The study design (e.g., within-subject design, between-subject, split-plot)</li>
 </ul></li>
 <li><p>See Jané et al. <span class="citation" data-cites="jane">(<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span> for a guide to calculating effect and variances across different study designs</p></li>
 </ul>
 </section>
 <section id="calculating-cohens-d_s-effect-size-between-subject" class="slide level2">
 <h2>Calculating Cohen’s <span class="math inline">\(d_s\)</span> effect size (between-subject)</h2>
-<ul>
-<li><p>Standardized effect size (Cohen’s <span class="math inline">\(d_s\)</span>): <span class="math display">\[  d_s = \frac{ \bar{x}_1 - \bar{x}_2 }{SD_{pooled}}\]</span></p></li>
-<li><p>Cohen’s <span class="math inline">\(d_s\)</span> variance: <span class="math display">\[V_d = \frac{ n_1 + n_2 }{n_1n_2} + \frac{ d^2 }{2(n_1n_2)}\]</span></p></li>
-</ul>
+<p>Standardized effect size (Cohen’s <span class="math inline">\(d_s\)</span>): <span class="math display">\[  d_s = \frac{ \bar{x}_1 - \bar{x}_2 }{SD_{pooled}}\]</span></p>
+<p>Cohen’s <span class="math inline">\(d_s\)</span> variance: <span class="math display">\[V_d = \frac{ n_1 + n_2 }{n_1n_2} + \frac{ d^2 }{2(n_1n_2)}\]</span></p>
 </section>
 <section id="raw-data" class="slide level2">
 <h2>Raw data</h2>
@@ -377,12 +387,32 @@ Cristian Mesquida
 </table>
 </section>
 <section id="sec-overview" class="slide level2">
-<h2>Calculating effect size using <code>meta</code></h2>
+<h2>Calculating effect sizes</h2>
+<p>We can calculate effect sizes using:</p>
+<ul>
+<li><p>Functions from the <strong><code>meta</code></strong> package (see <a href="#/fig-fig1" class="quarto-xref">Figure&nbsp;1</a>).</p>
+<blockquote>
+<p>Note that these functions calculate the effect sizes <strong>and</strong> perform the meta-analysis.</p>
+</blockquote></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">metacont</span>(</span>
+<span id="cb1-2"><a href=""></a>  n.e, mean.e, sd.e,</span>
+<span id="cb1-3"><a href=""></a>  n.c, mean.c, sd.c,</span>
+<span id="cb1-4"><a href=""></a>  <span class="at">data =</span> ...</span>
+<span id="cb1-5"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul>
+<li>The <code>escalc()</code> function from the&nbsp;<strong><code>metafor</code></strong>&nbsp;package, which calculates effect sizes without fitting a meta-analytic model.</li>
+</ul>
+</section>
+<section id="functions-from-meta" class="slide level2">
+<h2>Functions from <code>meta</code></h2>
 <div id="meta-fig5">
 <div id="fig-fig1" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-fig1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="images/fig5.png">
+<img data-src="images/fig5.png" width="700">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Overview of functions for calculating different types of effect sizes using the <code>meta</code> package. Obtained from Harrer et al. <span class="citation" data-cites="harrer2021">(<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span>
@@ -403,7 +433,7 @@ Figure&nbsp;1: Overview of functions for calculating different types of effect s
 <li><p>You might have notice that effect sizes vary across studies</p></li>
 </ul>
 
-<img data-src="index_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
 <section id="why-do-effect-sizes-differ-across-studies" class="slide level2">
 <h2>Why do effect sizes differ across studies?</h2>
 <ul>
@@ -479,9 +509,10 @@ Figure&nbsp;3: Relationship between standard error and effect size estimates. Ob
 <h2>FE meta-analysis</h2>
 <ul>
 <li><p>A FE meta-analysis simply use a weighted average of all studies to calculate the pooled effect size</p></li>
-<li><p>The weight of an individual study (<span class="math inline">\(w_k\)</span>) is calculated as follows: <span class="math display">\[w_k = \frac{1}{SE^2_k}\]</span></p>
+<li><p>The weight of an individual study (<span class="math inline">\(w_k\)</span>) is calculated as:</p>
+<p><span class="math display">\[w_k = \frac{1}{SE^2_k}\]</span></p></li>
+<li><p>The pooled effect size (<span class="math inline">\(\widehat{\theta}\)</span>) is calculated as:</p>
 <p><span class="math display">\[\widehat{\theta} = \frac{\sum_{k=1}^{K}\widehat{\theta_k} w_k}{\sum_{k=1}^{K} w_k}\]</span></p></li>
-<li><p>Multiply each study’s effect size <span class="math inline">\(\widehat{\theta}\)</span> with its corresponding weight <span class="math inline">\(w_k\)</span>, sum the results across all studies <span class="math inline">\(k\)</span> in our meta-analysis, and then divide by the sum of all the individual weights <span class="math inline">\(w_k\)</span></p></li>
 </ul>
 </section>
 <section id="random-effect-re-or-two-level-meta-analysis" class="slide level2">
@@ -501,14 +532,13 @@ Figure&nbsp;3: Relationship between standard error and effect size estimates. Ob
 <p>where <span class="math inline">\(\theta_k\)</span> is the study effect size, <span class="math inline">\(\theta_k\)</span> is the true effect size of one single study <em>k</em> and <span class="math inline">\(\epsilon_k\)</span> is the study sampling error</p>
 <p><strong>Level 2</strong>: Between-study variation <span class="math display">\[    \theta_k = \mu + \zeta_k \]</span></p>
 <p>where <span class="math inline">\(\theta_k\)</span> is the study effect size, <span class="math inline">\(\mu\)</span> is the mean of the distribution of true effect sizes and <span class="math inline">\(\zeta_k\)</span> is the deviation of study <span class="math inline">\(k\)</span>’s true effect from <span class="math inline">\(\mu\)</span></p>
-<p>The variance of the distribution of effect sizes is denoted by <span class="math inline">\(\tau_2\)</span> and represents between-study heterogeneity</p>
 </section>
 <section id="re-meta-analysis" class="slide level2">
 <h2>RE Meta-analysis</h2>
 <ul>
 <li><p>Combining the two levels gives: <span class="math display">\[  \widehat{\theta_k} = \mu + \zeta_k + \epsilon_k\]</span></p></li>
 <li><p>The model therefore separates sampling error from between-study variation</p></li>
-<li><p>This second source of variation allows us to quantidy between-study heterogeneity</p></li>
+<li><p>This second source of variation allows us to quantify between-study heterogeneity</p></li>
 </ul>
 </section>
 <section id="what-is-between-study-heterogeneity" class="slide level2">
@@ -546,21 +576,18 @@ Figure&nbsp;3: Relationship between standard error and effect size estimates. Ob
 </section>
 <section id="first-we-need-a-dataset" class="slide level2">
 <h2>First we need a dataset</h2>
-<ul>
-<li><p>The <strong><code>metadat</code></strong> package provides a collection of datasets for conducting meta-analyses</p></li>
-<li><p>We will use the <strong><code>dat.baskerville2012</code></strong> dataset</p></li>
-</ul>
+<p>We will use the <strong><code>metdat::dat.baskerville2012</code></strong> dataset. It contains 23 studies on the effectiveness of practice facilitation interventions within the primary care practice setting. The meta-analysis is available <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3262473/">here</a></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># Load dataset</span></span>
-<span id="cb1-2"><a href=""></a>dat <span class="ot">&lt;-</span> metadat<span class="sc">::</span>dat.baskerville2012 </span>
-<span id="cb1-3"><a href=""></a></span>
-<span id="cb1-4"><a href=""></a><span class="co"># Display first 5 rows as a table and color the last two columns</span></span>
-<span id="cb1-5"><a href=""></a>dat <span class="sc">|&gt;</span> </span>
-<span id="cb1-6"><a href=""></a>  <span class="fu">head</span>(<span class="dv">5</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb1-7"><a href=""></a>  <span class="fu">flextable</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb1-8"><a href=""></a>  <span class="fu">color</span>(<span class="at">j =</span> <span class="fu">c</span>(<span class="dv">17</span>, <span class="dv">18</span>), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">part =</span> <span class="st">"all"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="co"># Load dataset</span></span>
+<span id="cb2-2"><a href=""></a>dat <span class="ot">&lt;-</span> dat.baskerville2012 </span>
+<span id="cb2-3"><a href=""></a></span>
+<span id="cb2-4"><a href=""></a><span class="co"># Display first 5 rows as a table and color the last two columns</span></span>
+<span id="cb2-5"><a href=""></a>dat <span class="sc">|&gt;</span> </span>
+<span id="cb2-6"><a href=""></a>  <span class="fu">head</span>(<span class="dv">5</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb2-7"><a href=""></a>  <span class="fu">flextable</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb2-8"><a href=""></a>  <span class="fu">color</span>(<span class="at">j =</span> <span class="fu">c</span>(<span class="dv">17</span>, <span class="dv">18</span>), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">part =</span> <span class="st">"all"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="tabwid"><style>.cl-d61c6dd0{}.cl-d612f5fc{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-d612f610{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(255, 0, 0, 1.00);background-color:transparent;}.cl-d616f47c{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-d616f486{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-d6171696{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d61716a0{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d61716a1{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d61716aa{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d61716ab{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d61716b4{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-d61c6dd0"><thead><tr style="overflow-wrap:break-word;"><th class="cl-d6171696"><p class="cl-d616f47c"><span class="cl-d612f5fc">author</span></p></th><th class="cl-d61716a0"><p class="cl-d616f486"><span class="cl-d612f5fc">year</span></p></th><th class="cl-d61716a0"><p class="cl-d616f486"><span class="cl-d612f5fc">score</span></p></th><th class="cl-d6171696"><p class="cl-d616f47c"><span class="cl-d612f5fc">design</span></p></th><th class="cl-d61716a0"><p class="cl-d616f486"><span class="cl-d612f5fc">alloconc</span></p></th><th class="cl-d61716a0"><p class="cl-d616f486"><span class="cl-d612f5fc">blind</span></p></th><th class="cl-d61716a0"><p class="cl-d616f486"><span class="cl-d612f5fc">itt</span></p></th><th class="cl-d61716a0"><p class="cl-d616f486"><span class="cl-d612f5fc">fumonths</span></p></th><th class="cl-d61716a0"><p class="cl-d616f486"><span class="cl-d612f5fc">retention</span></p></th><th class="cl-d6171696"><p class="cl-d616f47c"><span class="cl-d612f5fc">country</span></p></th><th class="cl-d61716a0"><p class="cl-d616f486"><span class="cl-d612f5fc">outcomes</span></p></th><th class="cl-d61716a0"><p class="cl-d616f486"><span class="cl-d612f5fc">duration</span></p></th><th class="cl-d61716a0"><p class="cl-d616f486"><span class="cl-d612f5fc">pperf</span></p></th><th class="cl-d61716a0"><p class="cl-d616f486"><span class="cl-d612f5fc">meetings</span></p></th><th class="cl-d61716a0"><p class="cl-d616f486"><span class="cl-d612f5fc">hours</span></p></th><th class="cl-d61716a0"><p class="cl-d616f486"><span class="cl-d612f5fc">tailor</span></p></th><th class="cl-d61716a0"><p class="cl-d616f486"><span class="cl-d612f610">smd</span></p></th><th class="cl-d61716a0"><p class="cl-d616f486"><span class="cl-d612f610">se</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-d61716a1"><p class="cl-d616f47c"><span class="cl-d612f5fc">Kottke et al.</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">1,992</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">6</span></p></td><td class="cl-d61716a1"><p class="cl-d616f47c"><span class="cl-d612f5fc">cct</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">0</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">1</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">1</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">19</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">83</span></p></td><td class="cl-d61716a1"><p class="cl-d616f47c"><span class="cl-d612f5fc">US</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">2</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">18</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">5.5</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">30</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">1.0</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">1</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f610">1.01</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f610">0.52</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d61716a1"><p class="cl-d616f47c"><span class="cl-d612f5fc">McBride et al.</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">2,000</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">6</span></p></td><td class="cl-d61716a1"><p class="cl-d616f47c"><span class="cl-d612f5fc">rct</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">0</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">0</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">0</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">18</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">100</span></p></td><td class="cl-d61716a1"><p class="cl-d616f47c"><span class="cl-d612f5fc">US</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">4</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">12</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc"></span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">5</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">1.0</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">1</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f610">0.82</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f610">0.46</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d61716a1"><p class="cl-d616f47c"><span class="cl-d612f5fc">Stange et al.</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">2,000</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">6</span></p></td><td class="cl-d61716a1"><p class="cl-d616f47c"><span class="cl-d612f5fc">rct</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">0</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">0</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">0</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">24</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc"></span></p></td><td class="cl-d61716a1"><p class="cl-d616f47c"><span class="cl-d612f5fc">US</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">35</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">12</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">20.0</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">4</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">1.5</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">1</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f610">0.59</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f610">0.23</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d61716a1"><p class="cl-d616f47c"><span class="cl-d612f5fc">Lobo et al.</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">2,004</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">6</span></p></td><td class="cl-d61716a1"><p class="cl-d616f47c"><span class="cl-d612f5fc">rct</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">1</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">0</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">0</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">21</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">57</span></p></td><td class="cl-d61716a1"><p class="cl-d616f47c"><span class="cl-d612f5fc">NL</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">16</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">21</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">5.0</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">15</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">1.0</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f5fc">1</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f610">0.44</span></p></td><td class="cl-d61716aa"><p class="cl-d616f486"><span class="cl-d612f610">0.18</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d61716ab"><p class="cl-d616f47c"><span class="cl-d612f5fc">Roetzhiem et al.</span></p></td><td class="cl-d61716b4"><p class="cl-d616f486"><span class="cl-d612f5fc">2,005</span></p></td><td class="cl-d61716b4"><p class="cl-d616f486"><span class="cl-d612f5fc">6</span></p></td><td class="cl-d61716ab"><p class="cl-d616f47c"><span class="cl-d612f5fc">crct</span></p></td><td class="cl-d61716b4"><p class="cl-d616f486"><span class="cl-d612f5fc">0</span></p></td><td class="cl-d61716b4"><p class="cl-d616f486"><span class="cl-d612f5fc">1</span></p></td><td class="cl-d61716b4"><p class="cl-d616f486"><span class="cl-d612f5fc">0</span></p></td><td class="cl-d61716b4"><p class="cl-d616f486"><span class="cl-d612f5fc">24</span></p></td><td class="cl-d61716b4"><p class="cl-d616f486"><span class="cl-d612f5fc">100</span></p></td><td class="cl-d61716ab"><p class="cl-d616f47c"><span class="cl-d612f5fc">US</span></p></td><td class="cl-d61716b4"><p class="cl-d616f486"><span class="cl-d612f5fc">3</span></p></td><td class="cl-d61716b4"><p class="cl-d616f486"><span class="cl-d612f5fc">24</span></p></td><td class="cl-d61716b4"><p class="cl-d616f486"><span class="cl-d612f5fc">4.0</span></p></td><td class="cl-d61716b4"><p class="cl-d616f486"><span class="cl-d612f5fc">4</span></p></td><td class="cl-d61716b4"><p class="cl-d616f486"><span class="cl-d612f5fc">1.0</span></p></td><td class="cl-d61716b4"><p class="cl-d616f486"><span class="cl-d612f5fc">0</span></p></td><td class="cl-d61716b4"><p class="cl-d616f486"><span class="cl-d612f610">0.84</span></p></td><td class="cl-d61716b4"><p class="cl-d616f486"><span class="cl-d612f610">0.29</span></p></td></tr></tbody></table></div>
+<div class="tabwid"><style>.cl-255d4be2{}.cl-25567894{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-255678b2{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(255, 0, 0, 1.00);background-color:transparent;}.cl-255947fe{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-25594808{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-255965e0{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-255965e1{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-255965ea{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-255965eb{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-255965ec{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-255965f4{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-255d4be2"><thead><tr style="overflow-wrap:break-word;"><th class="cl-255965e0"><p class="cl-255947fe"><span class="cl-25567894">author</span></p></th><th class="cl-255965e1"><p class="cl-25594808"><span class="cl-25567894">year</span></p></th><th class="cl-255965e1"><p class="cl-25594808"><span class="cl-25567894">score</span></p></th><th class="cl-255965e0"><p class="cl-255947fe"><span class="cl-25567894">design</span></p></th><th class="cl-255965e1"><p class="cl-25594808"><span class="cl-25567894">alloconc</span></p></th><th class="cl-255965e1"><p class="cl-25594808"><span class="cl-25567894">blind</span></p></th><th class="cl-255965e1"><p class="cl-25594808"><span class="cl-25567894">itt</span></p></th><th class="cl-255965e1"><p class="cl-25594808"><span class="cl-25567894">fumonths</span></p></th><th class="cl-255965e1"><p class="cl-25594808"><span class="cl-25567894">retention</span></p></th><th class="cl-255965e0"><p class="cl-255947fe"><span class="cl-25567894">country</span></p></th><th class="cl-255965e1"><p class="cl-25594808"><span class="cl-25567894">outcomes</span></p></th><th class="cl-255965e1"><p class="cl-25594808"><span class="cl-25567894">duration</span></p></th><th class="cl-255965e1"><p class="cl-25594808"><span class="cl-25567894">pperf</span></p></th><th class="cl-255965e1"><p class="cl-25594808"><span class="cl-25567894">meetings</span></p></th><th class="cl-255965e1"><p class="cl-25594808"><span class="cl-25567894">hours</span></p></th><th class="cl-255965e1"><p class="cl-25594808"><span class="cl-25567894">tailor</span></p></th><th class="cl-255965e1"><p class="cl-25594808"><span class="cl-255678b2">smd</span></p></th><th class="cl-255965e1"><p class="cl-25594808"><span class="cl-255678b2">se</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-255965ea"><p class="cl-255947fe"><span class="cl-25567894">Kottke et al.</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">1,992</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">6</span></p></td><td class="cl-255965ea"><p class="cl-255947fe"><span class="cl-25567894">cct</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">0</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">1</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">1</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">19</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">83</span></p></td><td class="cl-255965ea"><p class="cl-255947fe"><span class="cl-25567894">US</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">2</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">18</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">5.5</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">30</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">1.0</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">1</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-255678b2">1.01</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-255678b2">0.52</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-255965ea"><p class="cl-255947fe"><span class="cl-25567894">McBride et al.</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">2,000</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">6</span></p></td><td class="cl-255965ea"><p class="cl-255947fe"><span class="cl-25567894">rct</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">0</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">0</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">0</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">18</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">100</span></p></td><td class="cl-255965ea"><p class="cl-255947fe"><span class="cl-25567894">US</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">4</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">12</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894"></span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">5</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">1.0</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">1</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-255678b2">0.82</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-255678b2">0.46</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-255965ea"><p class="cl-255947fe"><span class="cl-25567894">Stange et al.</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">2,000</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">6</span></p></td><td class="cl-255965ea"><p class="cl-255947fe"><span class="cl-25567894">rct</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">0</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">0</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">0</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">24</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894"></span></p></td><td class="cl-255965ea"><p class="cl-255947fe"><span class="cl-25567894">US</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">35</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">12</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">20.0</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">4</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">1.5</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">1</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-255678b2">0.59</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-255678b2">0.23</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-255965ea"><p class="cl-255947fe"><span class="cl-25567894">Lobo et al.</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">2,004</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">6</span></p></td><td class="cl-255965ea"><p class="cl-255947fe"><span class="cl-25567894">rct</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">1</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">0</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">0</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">21</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">57</span></p></td><td class="cl-255965ea"><p class="cl-255947fe"><span class="cl-25567894">NL</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">16</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">21</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">5.0</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">15</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">1.0</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-25567894">1</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-255678b2">0.44</span></p></td><td class="cl-255965eb"><p class="cl-25594808"><span class="cl-255678b2">0.18</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-255965ec"><p class="cl-255947fe"><span class="cl-25567894">Roetzhiem et al.</span></p></td><td class="cl-255965f4"><p class="cl-25594808"><span class="cl-25567894">2,005</span></p></td><td class="cl-255965f4"><p class="cl-25594808"><span class="cl-25567894">6</span></p></td><td class="cl-255965ec"><p class="cl-255947fe"><span class="cl-25567894">crct</span></p></td><td class="cl-255965f4"><p class="cl-25594808"><span class="cl-25567894">0</span></p></td><td class="cl-255965f4"><p class="cl-25594808"><span class="cl-25567894">1</span></p></td><td class="cl-255965f4"><p class="cl-25594808"><span class="cl-25567894">0</span></p></td><td class="cl-255965f4"><p class="cl-25594808"><span class="cl-25567894">24</span></p></td><td class="cl-255965f4"><p class="cl-25594808"><span class="cl-25567894">100</span></p></td><td class="cl-255965ec"><p class="cl-255947fe"><span class="cl-25567894">US</span></p></td><td class="cl-255965f4"><p class="cl-25594808"><span class="cl-25567894">3</span></p></td><td class="cl-255965f4"><p class="cl-25594808"><span class="cl-25567894">24</span></p></td><td class="cl-255965f4"><p class="cl-25594808"><span class="cl-25567894">4.0</span></p></td><td class="cl-255965f4"><p class="cl-25594808"><span class="cl-25567894">4</span></p></td><td class="cl-255965f4"><p class="cl-25594808"><span class="cl-25567894">1.0</span></p></td><td class="cl-255965f4"><p class="cl-25594808"><span class="cl-25567894">0</span></p></td><td class="cl-255965f4"><p class="cl-25594808"><span class="cl-255678b2">0.84</span></p></td><td class="cl-255965f4"><p class="cl-25594808"><span class="cl-255678b2">0.29</span></p></td></tr></tbody></table></div>
 </div>
 </div>
 </section>
@@ -573,20 +600,20 @@ Figure&nbsp;3: Relationship between standard error and effect size estimates. Ob
 <li><p>The <strong>type of effect size</strong></p></li>
 <li><p>Whether the <strong>effect sizes need to be calculated from the raw study data</strong></p></li>
 </ul></li>
-<li><p>See <a href="#/sec-overview" class="quarto-xref">Section&nbsp;2.4</a> for an overview of the different functions</p></li>
+<li><p>See <a href="#/sec-overview" class="quarto-xref">Section&nbsp;3.5</a> for an overview of the different functions</p></li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a>meta <span class="ot">&lt;-</span> <span class="fu">metagen</span>(<span class="at">TE =</span> smd,              <span class="co"># standardized effect size</span></span>
-<span id="cb2-2"><a href=""></a>                <span class="at">seTE =</span> se,             <span class="co"># standard error</span></span>
-<span id="cb2-3"><a href=""></a>                <span class="at">data =</span> dat[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>), ], <span class="co"># dataset</span></span>
-<span id="cb2-4"><a href=""></a>                <span class="at">prediction =</span> <span class="cn">TRUE</span>)     <span class="co"># prediction interval</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>meta <span class="ot">&lt;-</span> <span class="fu">metagen</span>(<span class="at">TE =</span> smd,              <span class="co"># standardized effect size</span></span>
+<span id="cb3-2"><a href=""></a>                <span class="at">seTE =</span> se,             <span class="co"># standard error</span></span>
+<span id="cb3-3"><a href=""></a>                <span class="at">data =</span> dat[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>), ], <span class="co"># dataset</span></span>
+<span id="cb3-4"><a href=""></a>                <span class="at">prediction =</span> <span class="cn">TRUE</span>)     <span class="co"># prediction interval</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="metagen-output" class="slide level2">
 <h2><code>metagen()</code> output</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># Print output</span></span>
-<span id="cb3-2"><a href=""></a>meta</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="co"># Print output</span></span>
+<span id="cb4-2"><a href=""></a>meta</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Number of studies: k = 15
 
@@ -615,20 +642,20 @@ Details of meta-analysis methods:
 <section id="reporting-the-main-result" class="slide level2">
 <h2>Reporting the main result</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="co"># Print outputs</span></span>
-<span id="cb5-2"><a href=""></a>meta<span class="sc">$</span>TE.random    <span class="co"># Pooled effect size</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="co"># Print outputs</span></span>
+<span id="cb6-2"><a href=""></a>meta<span class="sc">$</span>TE.random    <span class="co"># Pooled effect size</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5957733</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>meta<span class="sc">$</span>lower.random <span class="co"># Lower bound of 95% CI</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>meta<span class="sc">$</span>lower.random <span class="co"># Lower bound of 95% CI</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4354568</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>meta<span class="sc">$</span>upper.random <span class="co"># Upper bound of 95% CI</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>meta<span class="sc">$</span>upper.random <span class="co"># Upper bound of 95% CI</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7560898</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>meta<span class="sc">$</span>pval.random  <span class="co"># P-value of the Z-test</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a>meta<span class="sc">$</span>pval.random  <span class="co"># P-value of the Z-test</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3.248342e-13</code></pre>
 </div>
@@ -639,8 +666,11 @@ Details of meta-analysis methods:
 </section>
 <section id="forest-plot" class="slide level2">
 <h2>Forest plot</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="fu">forest</span>(meta)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
-<img data-src="index_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section></section>
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section></section>
 <section>
 <section id="between-study-heterogeneity" class="title-slide slide level1 center">
 <h1>Between-study heterogeneity</h1>
@@ -649,7 +679,7 @@ Details of meta-analysis methods:
 <section id="what-does-between-study-heterogeneity-look-like" class="slide level2">
 <h2>What does between-study heterogeneity look like?</h2>
 
-<img data-src="index_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
 <section id="cochrans-q" class="slide level2">
 <h2>Cochran’s <em>Q</em></h2>
 <ul>
@@ -662,15 +692,15 @@ Details of meta-analysis methods:
 <section id="reporting-cochrans-q" class="slide level2">
 <h2>Reporting Cochran’s <em>Q</em></h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a>meta<span class="sc">$</span>Q      <span class="co"># Q-test statistic</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a>meta<span class="sc">$</span>Q      <span class="co"># Q-test statistic</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 16.41615</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a>meta<span class="sc">$</span>df.Q.  <span class="co"># degrees of freedom</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>meta<span class="sc">$</span>df.Q.  <span class="co"># degrees of freedom</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>NULL</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>meta<span class="sc">$</span>pval.Q <span class="co"># p-value</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a>meta<span class="sc">$</span>pval.Q <span class="co"># p-value</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2886265</code></pre>
 </div>
@@ -704,8 +734,8 @@ Details of meta-analysis methods:
 <section id="reporting-i2" class="slide level2">
 <h2>Reporting <span class="math inline">\(I^2\)</span></h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a><span class="co"># Print I2</span></span>
-<span id="cb19-2"><a href=""></a>meta<span class="sc">$</span>I2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a><span class="co"># Print I2</span></span>
+<span id="cb21-2"><a href=""></a>meta<span class="sc">$</span>I2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1471811</code></pre>
 </div>
@@ -728,11 +758,11 @@ Details of meta-analysis methods:
 <section id="reporting-tau2-and-tau" class="slide level2">
 <h2>Reporting <span class="math inline">\(\tau^2\)</span> and <span class="math inline">\(\tau\)</span></h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a>meta<span class="sc">$</span>tau2 <span class="co"># variance of the distribution</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a>meta<span class="sc">$</span>tau2 <span class="co"># variance of the distribution</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.01978386</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a>meta<span class="sc">$</span>tau  <span class="co"># SD of the variance</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a>meta<span class="sc">$</span>tau  <span class="co"># SD of the variance</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1406551</code></pre>
 </div>
@@ -749,11 +779,11 @@ Details of meta-analysis methods:
 <section id="reporting-prediction-intervals" class="slide level2">
 <h2>Reporting Prediction Intervals</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a>meta<span class="sc">$</span>lower.predict <span class="co"># Lower bound of the PI</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href=""></a>meta<span class="sc">$</span>lower.predict <span class="co"># Lower bound of the PI</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.246796</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href=""></a>meta<span class="sc">$</span>upper.predict <span class="co"># Upper bound of the PI</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href=""></a>meta<span class="sc">$</span>upper.predict <span class="co"># Upper bound of the PI</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9447505</code></pre>
 </div>
@@ -798,7 +828,7 @@ Details of meta-analysis methods:
 <li><p>We therefore need a <strong>categorical moderator</strong></p></li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href=""></a><span class="fu">glimpse</span>(dat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href=""></a><span class="fu">glimpse</span>(dat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 23
 Columns: 18
@@ -831,7 +861,7 @@ $ se        &lt;dbl&gt; 0.52, 0.46, 0.23, 0.18, 0.29, 0.29, 0.36, 0.37, 0.15, 0.
 <li><p>This is a common moderator because <strong>blinding</strong> can mitigate several sources of bias which, if left unchecked, can quantitively affect study outcomes</p></li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href=""></a><span class="fu">levels</span>(<span class="fu">as.factor</span>(dat<span class="sc">$</span>blind))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href=""></a><span class="fu">levels</span>(<span class="fu">as.factor</span>(dat<span class="sc">$</span>blind))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "0" "1"</code></pre>
 </div>
@@ -849,9 +879,9 @@ $ se        &lt;dbl&gt; 0.52, 0.46, 0.23, 0.18, 0.29, 0.29, 0.36, 0.37, 0.15, 0.
 <section id="reporting-subgroup-analysis" class="slide level2">
 <h2>Reporting subgroup analysis</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href=""></a>(meta_subgroup <span class="ot">&lt;-</span> <span class="fu">update</span>(meta,              <span class="co"># meta object</span></span>
-<span id="cb33-2"><a href=""></a>                         <span class="at">subgroup =</span> blind)  <span class="co"># Categorical moderator defining the subgroups</span></span>
-<span id="cb33-3"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href=""></a>(meta_subgroup <span class="ot">&lt;-</span> <span class="fu">update</span>(meta,              <span class="co"># meta object</span></span>
+<span id="cb35-2"><a href=""></a>                         <span class="at">subgroup =</span> blind)  <span class="co"># Categorical moderator defining the subgroups</span></span>
+<span id="cb35-3"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Number of studies: k = 23
 
@@ -901,17 +931,17 @@ Details of meta-analysis methods:
 <h2>Subgroup forest plot</h2>
 <p>We can use the <code>forest()</code> function to visualize the effect sizes and pooled estimates for each subgroup.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href=""></a><span class="co"># Create a meta-analysis using only studies with unblinded participants</span></span>
-<span id="cb35-2"><a href=""></a>meta_rct <span class="ot">&lt;-</span> <span class="fu">update</span>(</span>
-<span id="cb35-3"><a href=""></a>  meta,</span>
-<span id="cb35-4"><a href=""></a>  <span class="at">subset =</span> blind <span class="sc">==</span> <span class="st">"0"</span></span>
-<span id="cb35-5"><a href=""></a>)</span>
-<span id="cb35-6"><a href=""></a></span>
-<span id="cb35-7"><a href=""></a><span class="co"># Plot the forest plot for this subgroup</span></span>
-<span id="cb35-8"><a href=""></a><span class="fu">forest</span>(meta_rct)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href=""></a><span class="co"># Create a meta-analysis using only studies with unblinded participants</span></span>
+<span id="cb37-2"><a href=""></a>meta_rct <span class="ot">&lt;-</span> <span class="fu">update</span>(</span>
+<span id="cb37-3"><a href=""></a>  meta,</span>
+<span id="cb37-4"><a href=""></a>  <span class="at">subset =</span> blind <span class="sc">==</span> <span class="st">"0"</span></span>
+<span id="cb37-5"><a href=""></a>)</span>
+<span id="cb37-6"><a href=""></a></span>
+<span id="cb37-7"><a href=""></a><span class="co"># Plot the forest plot for this subgroup</span></span>
+<span id="cb37-8"><a href=""></a><span class="fu">forest</span>(meta_rct)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-17-1.png" style="width:100.0%" class="r-stretch"></section>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-18-1.png" style="width:100.0%" class="r-stretch"></section>
 <section id="meta-regression" class="slide level2">
 <h2>Meta-regression</h2>
 <ul>
@@ -923,16 +953,16 @@ Details of meta-analysis methods:
 <h2>Meta-regression</h2>
 <p>We can perform a meta-regression using the <code>metareg()</code> function</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href=""></a>meta_reg <span class="ot">&lt;-</span> <span class="fu">metareg</span>(meta,       <span class="co"># Meta object</span></span>
-<span id="cb36-2"><a href=""></a>                    <span class="sc">~</span> duration) <span class="co"># Continuous predictor</span></span>
-<span id="cb36-3"><a href=""></a></span>
-<span id="cb36-4"><a href=""></a><span class="co"># Display the meta-regression results</span></span>
-<span id="cb36-5"><a href=""></a>meta_reg <span class="sc">|&gt;</span></span>
-<span id="cb36-6"><a href=""></a>  broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
-<span id="cb36-7"><a href=""></a>  <span class="fu">select</span>(<span class="sc">-</span>type) <span class="sc">|&gt;</span></span>
-<span id="cb36-8"><a href=""></a>  <span class="fu">flextable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href=""></a>meta_reg <span class="ot">&lt;-</span> <span class="fu">metareg</span>(meta,       <span class="co"># Meta object</span></span>
+<span id="cb38-2"><a href=""></a>                    <span class="sc">~</span> duration) <span class="co"># Continuous predictor</span></span>
+<span id="cb38-3"><a href=""></a></span>
+<span id="cb38-4"><a href=""></a><span class="co"># Display the meta-regression results</span></span>
+<span id="cb38-5"><a href=""></a>meta_reg <span class="sc">|&gt;</span></span>
+<span id="cb38-6"><a href=""></a>  broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">|&gt;</span></span>
+<span id="cb38-7"><a href=""></a>  <span class="fu">select</span>(<span class="sc">-</span>type) <span class="sc">|&gt;</span></span>
+<span id="cb38-8"><a href=""></a>  <span class="fu">flextable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="tabwid"><style>.cl-d71883d6{}.cl-d712f36c{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-d715427a{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-d7154284{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-d7155bca{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d7155bd4{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d7155bd5{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d7155bd6{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d7155bde{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d7155be8{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-d71883d6"><thead><tr style="overflow-wrap:break-word;"><th class="cl-d7155bca"><p class="cl-d715427a"><span class="cl-d712f36c">term</span></p></th><th class="cl-d7155bd4"><p class="cl-d7154284"><span class="cl-d712f36c">estimate</span></p></th><th class="cl-d7155bd4"><p class="cl-d7154284"><span class="cl-d712f36c">std.error</span></p></th><th class="cl-d7155bd4"><p class="cl-d7154284"><span class="cl-d712f36c">statistic</span></p></th><th class="cl-d7155bd4"><p class="cl-d7154284"><span class="cl-d712f36c">p.value</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-d7155bd5"><p class="cl-d715427a"><span class="cl-d712f36c">intercept</span></p></td><td class="cl-d7155bd6"><p class="cl-d7154284"><span class="cl-d712f36c">0.56500107068</span></p></td><td class="cl-d7155bd6"><p class="cl-d7154284"><span class="cl-d712f36c">0.148564780</span></p></td><td class="cl-d7155bd6"><p class="cl-d7154284"><span class="cl-d712f36c">3.803062008</span></p></td><td class="cl-d7155bd6"><p class="cl-d7154284"><span class="cl-d712f36c">0.0001429186</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d7155bde"><p class="cl-d715427a"><span class="cl-d712f36c">duration</span></p></td><td class="cl-d7155be8"><p class="cl-d7154284"><span class="cl-d712f36c">0.00003143757</span></p></td><td class="cl-d7155be8"><p class="cl-d7154284"><span class="cl-d712f36c">0.009017825</span></p></td><td class="cl-d7155be8"><p class="cl-d7154284"><span class="cl-d712f36c">0.003486159</span></p></td><td class="cl-d7155be8"><p class="cl-d7154284"><span class="cl-d712f36c">0.9972184535</span></p></td></tr></tbody></table></div>
+<div class="tabwid"><style>.cl-266fd6b2{}.cl-266a553e{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-266c9650{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-266c965a{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-266cb39c{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-266cb39d{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-266cb3b0{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-266cb3ba{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-266cb3bb{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-266cb3c4{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-266fd6b2"><thead><tr style="overflow-wrap:break-word;"><th class="cl-266cb39c"><p class="cl-266c9650"><span class="cl-266a553e">term</span></p></th><th class="cl-266cb39d"><p class="cl-266c965a"><span class="cl-266a553e">estimate</span></p></th><th class="cl-266cb39d"><p class="cl-266c965a"><span class="cl-266a553e">std.error</span></p></th><th class="cl-266cb39d"><p class="cl-266c965a"><span class="cl-266a553e">statistic</span></p></th><th class="cl-266cb39d"><p class="cl-266c965a"><span class="cl-266a553e">p.value</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-266cb3b0"><p class="cl-266c9650"><span class="cl-266a553e">intercept</span></p></td><td class="cl-266cb3ba"><p class="cl-266c965a"><span class="cl-266a553e">0.56500107068</span></p></td><td class="cl-266cb3ba"><p class="cl-266c965a"><span class="cl-266a553e">0.148564780</span></p></td><td class="cl-266cb3ba"><p class="cl-266c965a"><span class="cl-266a553e">3.803062008</span></p></td><td class="cl-266cb3ba"><p class="cl-266c965a"><span class="cl-266a553e">0.0001429186</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-266cb3bb"><p class="cl-266c9650"><span class="cl-266a553e">duration</span></p></td><td class="cl-266cb3c4"><p class="cl-266c965a"><span class="cl-266a553e">0.00003143757</span></p></td><td class="cl-266cb3c4"><p class="cl-266c965a"><span class="cl-266a553e">0.009017825</span></p></td><td class="cl-266cb3c4"><p class="cl-266c965a"><span class="cl-266a553e">0.003486159</span></p></td><td class="cl-266cb3c4"><p class="cl-266c965a"><span class="cl-266a553e">0.9972184535</span></p></td></tr></tbody></table></div>
 </div>
 </div>
 <ul>
@@ -949,11 +979,11 @@ Details of meta-analysis methods:
 <section id="bubble-plot" class="slide level2">
 <h2>Bubble plot</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href=""></a><span class="co"># Plot bubble plot</span></span>
-<span id="cb37-2"><a href=""></a><span class="fu">bubble</span>(meta_reg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href=""></a><span class="co"># Plot bubble plot</span></span>
+<span id="cb39-2"><a href=""></a><span class="fu">bubble</span>(meta_reg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-19-1.png" style="width:100.0%" class="r-stretch"></section>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-20-1.png" style="width:100.0%" class="r-stretch"></section>
 <section id="interpreting-bubble-plots" class="slide level2">
 <h2>Interpreting bubble plots</h2>
 <ul>
@@ -984,7 +1014,7 @@ Details of meta-analysis methods:
 </ul>
 <!-- -->
 <ul>
-<li>Publication bias is&nbsp;<strong>one possible explanation</strong> for small-study effects, but small-study effects can also arise for other reasons.</li>
+<li>Publication bias is <strong>one possible explanation</strong> for small-study effects, but small-study effects can also arise for other reasons.</li>
 </ul>
 </section>
 <section id="funnel-plot" class="slide level2">
@@ -993,13 +1023,13 @@ Details of meta-analysis methods:
 <li>In the absence of small-study effects, studies should roughly follow the funnel-shaped pattern shown in the plot</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href=""></a><span class="co"># Produce funnel plot</span></span>
-<span id="cb38-2"><a href=""></a><span class="fu">funnel</span>(meta,</span>
-<span id="cb38-3"><a href=""></a>       <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">2</span>),</span>
-<span id="cb38-4"><a href=""></a>       <span class="at">studlab =</span> <span class="cn">TRUE</span>) <span class="co"># Add study label</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href=""></a><span class="co"># Produce funnel plot</span></span>
+<span id="cb40-2"><a href=""></a><span class="fu">funnel</span>(meta,</span>
+<span id="cb40-3"><a href=""></a>       <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb40-4"><a href=""></a>       <span class="at">studlab =</span> <span class="cn">TRUE</span>) <span class="co"># Add study label</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-20-1.png" width="960" class="r-stretch"></section>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-21-1.png" width="960" class="r-stretch"></section>
 <section id="interpreting-the-funnel-plot" class="slide level2">
 <h2>Interpreting the Funnel plot</h2>
 <ul>
@@ -1010,8 +1040,26 @@ Details of meta-analysis methods:
 </section>
 <section id="contour-enhanced-funnel-plots" class="slide level2">
 <h2><strong>Contour-enhanced funnel plots</strong></h2>
+<ul>
+<li>Similar to a standard funnel plot, but includes&nbsp;<strong>shaded regions indicating different levels of statistical significance</strong></li>
+</ul>
+<!-- -->
+<ul>
+<li>These contours help assess whether the asymmetry in the funnel plot is related to <strong>statistical significance</strong></li>
+</ul>
 
-<img data-src="index_files/figure-revealjs/unnamed-chunk-21-1.png" width="960" class="r-stretch"></section>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-22-1.png" width="960" class="r-stretch"></section>
+<section id="other-causes-of-asymmetry" class="slide level2">
+<h2>Other causes of asymmetry</h2>
+<ul>
+<li><p><strong>Between-study heterogeneity</strong>: Funnel plots assume that the dispersion of effect sizes is due to sampling error. However, the studies may estimate different underlying true effects, which can produce asymmetry</p></li>
+<li><p><strong>Differences in study quality</strong>: smaller studies may be more susceptible to bias and therefore report larger effect sizes. This can also lead to funnel plot asymmetry, even when there is no publication bias</p></li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>Chance:</strong> It is possible that funnel plot asymmetry simply occurs by chance</li>
+</ul>
+</section>
 <section id="trim-fill-method" class="slide level2">
 <h2>Trim &amp; Fill method</h2>
 <ul>
@@ -1019,8 +1067,8 @@ Details of meta-analysis methods:
 <li><p>The pooled effect size of the resulting “extended” data set then represents the estimate when correcting for small-study effects</p></li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href=""></a><span class="co"># Conduct trim and fill method</span></span>
-<span id="cb39-2"><a href=""></a>(trim <span class="ot">&lt;-</span> <span class="fu">trimfill</span>(meta))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href=""></a><span class="co"># Conduct trim and fill method</span></span>
+<span id="cb41-2"><a href=""></a>(trim <span class="ot">&lt;-</span> <span class="fu">trimfill</span>(meta))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Number of studies: k = 30 (with 7 added studies)
 
@@ -1049,13 +1097,14 @@ Details of meta-analysis methods:
 <ul>
 <li><p>The trim and fill method added a total of 7 studies</p></li>
 <li><p>The corrected effect corresponds to a Cohen’s <span class="math inline">\(d_s\)</span> = 0.46. This is still significant, but lower than the effect of <span class="math inline">\(d_s\)</span> =0.56 initially calculated for <code>meta</code></p></li>
+<li><p>An important caveat pertaining to the trim-and-fill method is that it does not produce reliable results when the between-study heterogeneity is large</p></li>
 </ul>
 </section>
 <section id="eggers-regression-test" class="slide level2">
 <h2>Egger’s regression test</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href=""></a>(egger <span class="ot">&lt;-</span> <span class="fu">metabias</span>(meta, </span>
-<span id="cb41-2"><a href=""></a>                  <span class="at">method.bias =</span> <span class="st">"linreg"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href=""></a>(egger <span class="ot">&lt;-</span> <span class="fu">metabias</span>(meta, </span>
+<span id="cb43-2"><a href=""></a>                  <span class="at">method.bias =</span> <span class="st">"linreg"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Linear regression test of funnel plot asymmetry
 
@@ -1089,23 +1138,23 @@ Details:
 <section id="pet-precision-effect-test" class="slide level2">
 <h2>PET (Precision-Effect Test)</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href=""></a><span class="co"># Perform PET test</span></span>
-<span id="cb43-2"><a href=""></a>PET <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">rma</span>(<span class="at">yi =</span> smd, </span>
-<span id="cb43-3"><a href=""></a>                    <span class="at">sei =</span> se, </span>
-<span id="cb43-4"><a href=""></a>                    <span class="at">mods =</span> <span class="sc">~</span>se, </span>
-<span id="cb43-5"><a href=""></a>                    <span class="at">data =</span> dat, </span>
-<span id="cb43-6"><a href=""></a>                    <span class="at">method =</span> <span class="st">"FE"</span>)</span>
-<span id="cb43-7"><a href=""></a></span>
-<span id="cb43-8"><a href=""></a><span class="co"># Store results</span></span>
-<span id="cb43-9"><a href=""></a>res_pet <span class="ot">&lt;-</span> PET <span class="sc">|&gt;</span> </span>
-<span id="cb43-10"><a href=""></a>  broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb43-11"><a href=""></a>  <span class="fu">select</span>(<span class="sc">-</span>type) </span>
-<span id="cb43-12"><a href=""></a></span>
-<span id="cb43-13"><a href=""></a><span class="co"># Display results of PET test</span></span>
-<span id="cb43-14"><a href=""></a>res_pet <span class="sc">|&gt;</span> </span>
-<span id="cb43-15"><a href=""></a>  <span class="fu">flextable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href=""></a><span class="co"># Perform PET test</span></span>
+<span id="cb45-2"><a href=""></a>PET <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">rma</span>(<span class="at">yi =</span> smd, </span>
+<span id="cb45-3"><a href=""></a>                    <span class="at">sei =</span> se, </span>
+<span id="cb45-4"><a href=""></a>                    <span class="at">mods =</span> <span class="sc">~</span>se, </span>
+<span id="cb45-5"><a href=""></a>                    <span class="at">data =</span> dat, </span>
+<span id="cb45-6"><a href=""></a>                    <span class="at">method =</span> <span class="st">"FE"</span>)</span>
+<span id="cb45-7"><a href=""></a></span>
+<span id="cb45-8"><a href=""></a><span class="co"># Store results</span></span>
+<span id="cb45-9"><a href=""></a>res_pet <span class="ot">&lt;-</span> PET <span class="sc">|&gt;</span> </span>
+<span id="cb45-10"><a href=""></a>  broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb45-11"><a href=""></a>  <span class="fu">select</span>(<span class="sc">-</span>type) </span>
+<span id="cb45-12"><a href=""></a></span>
+<span id="cb45-13"><a href=""></a><span class="co"># Display results of PET test</span></span>
+<span id="cb45-14"><a href=""></a>res_pet <span class="sc">|&gt;</span> </span>
+<span id="cb45-15"><a href=""></a>  <span class="fu">flextable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="tabwid"><style>.cl-d77905b2{}.cl-d7731c2e{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-d77599e0{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-d77599f4{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-d775b38a{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d775b394{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d775b395{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d775b39e{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d775b39f{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d775b3a8{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-d77905b2"><thead><tr style="overflow-wrap:break-word;"><th class="cl-d775b38a"><p class="cl-d77599e0"><span class="cl-d7731c2e">term</span></p></th><th class="cl-d775b394"><p class="cl-d77599f4"><span class="cl-d7731c2e">estimate</span></p></th><th class="cl-d775b394"><p class="cl-d77599f4"><span class="cl-d7731c2e">std.error</span></p></th><th class="cl-d775b394"><p class="cl-d77599f4"><span class="cl-d7731c2e">statistic</span></p></th><th class="cl-d775b394"><p class="cl-d77599f4"><span class="cl-d7731c2e">p.value</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-d775b395"><p class="cl-d77599e0"><span class="cl-d7731c2e">intercept</span></p></td><td class="cl-d775b39e"><p class="cl-d77599f4"><span class="cl-d7731c2e">0.05192168</span></p></td><td class="cl-d775b39e"><p class="cl-d77599f4"><span class="cl-d7731c2e">0.1598933</span></p></td><td class="cl-d775b39e"><p class="cl-d77599f4"><span class="cl-d7731c2e">0.3247271</span></p></td><td class="cl-d775b39e"><p class="cl-d77599f4"><span class="cl-d7731c2e">0.745387599</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d775b39f"><p class="cl-d77599e0"><span class="cl-d7731c2e">se</span></p></td><td class="cl-d775b3a8"><p class="cl-d77599f4"><span class="cl-d7731c2e">1.93303035</span></p></td><td class="cl-d775b3a8"><p class="cl-d77599f4"><span class="cl-d7731c2e">0.6085717</span></p></td><td class="cl-d775b3a8"><p class="cl-d77599f4"><span class="cl-d7731c2e">3.1763396</span></p></td><td class="cl-d775b3a8"><p class="cl-d77599f4"><span class="cl-d7731c2e">0.001491462</span></p></td></tr></tbody></table></div>
+<div class="tabwid"><style>.cl-26cca1bc{}.cl-26c75054{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-26c98784{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-26c98785{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-26c9a32c{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26c9a336{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26c9a337{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26c9a340{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26c9a34a{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26c9a34b{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-26cca1bc"><thead><tr style="overflow-wrap:break-word;"><th class="cl-26c9a32c"><p class="cl-26c98784"><span class="cl-26c75054">term</span></p></th><th class="cl-26c9a336"><p class="cl-26c98785"><span class="cl-26c75054">estimate</span></p></th><th class="cl-26c9a336"><p class="cl-26c98785"><span class="cl-26c75054">std.error</span></p></th><th class="cl-26c9a336"><p class="cl-26c98785"><span class="cl-26c75054">statistic</span></p></th><th class="cl-26c9a336"><p class="cl-26c98785"><span class="cl-26c75054">p.value</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-26c9a337"><p class="cl-26c98784"><span class="cl-26c75054">intercept</span></p></td><td class="cl-26c9a340"><p class="cl-26c98785"><span class="cl-26c75054">0.05192168</span></p></td><td class="cl-26c9a340"><p class="cl-26c98785"><span class="cl-26c75054">0.1598933</span></p></td><td class="cl-26c9a340"><p class="cl-26c98785"><span class="cl-26c75054">0.3247271</span></p></td><td class="cl-26c9a340"><p class="cl-26c98785"><span class="cl-26c75054">0.745387599</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-26c9a34a"><p class="cl-26c98784"><span class="cl-26c75054">se</span></p></td><td class="cl-26c9a34b"><p class="cl-26c98785"><span class="cl-26c75054">1.93303035</span></p></td><td class="cl-26c9a34b"><p class="cl-26c98785"><span class="cl-26c75054">0.6085717</span></p></td><td class="cl-26c9a34b"><p class="cl-26c98785"><span class="cl-26c75054">3.1763396</span></p></td><td class="cl-26c9a34b"><p class="cl-26c98785"><span class="cl-26c75054">0.001491462</span></p></td></tr></tbody></table></div>
 </div>
 </div>
 <blockquote>
@@ -1116,20 +1165,20 @@ Details:
 <h2>PEESE (Precision-Effect Estimate with Standard Error)</h2>
 <p>If the PET intercept is statistically significantly different from 0, we use the PEESE intercept as the corrected pooled effect-size estimate.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href=""></a><span class="co"># Peform PEESE test</span></span>
-<span id="cb44-2"><a href=""></a>PEESE <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">rma</span>(<span class="at">yi =</span> smd, </span>
-<span id="cb44-3"><a href=""></a>                      <span class="at">sei =</span> se, </span>
-<span id="cb44-4"><a href=""></a>                      <span class="at">mods =</span> <span class="sc">~</span><span class="fu">I</span>(se<span class="sc">^</span><span class="dv">2</span>), </span>
-<span id="cb44-5"><a href=""></a>                      <span class="at">data =</span> dat, </span>
-<span id="cb44-6"><a href=""></a>                      <span class="at">method =</span> <span class="st">"FE"</span>)</span>
-<span id="cb44-7"><a href=""></a></span>
-<span id="cb44-8"><a href=""></a><span class="co"># Display results of PEESE test</span></span>
-<span id="cb44-9"><a href=""></a>PEESE <span class="sc">|&gt;</span> </span>
-<span id="cb44-10"><a href=""></a>  broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb44-11"><a href=""></a>  <span class="fu">select</span>(<span class="sc">-</span>type) <span class="sc">|&gt;</span> </span>
-<span id="cb44-12"><a href=""></a>  <span class="fu">flextable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href=""></a><span class="co"># Peform PEESE test</span></span>
+<span id="cb46-2"><a href=""></a>PEESE <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">rma</span>(<span class="at">yi =</span> smd, </span>
+<span id="cb46-3"><a href=""></a>                      <span class="at">sei =</span> se, </span>
+<span id="cb46-4"><a href=""></a>                      <span class="at">mods =</span> <span class="sc">~</span><span class="fu">I</span>(se<span class="sc">^</span><span class="dv">2</span>), </span>
+<span id="cb46-5"><a href=""></a>                      <span class="at">data =</span> dat, </span>
+<span id="cb46-6"><a href=""></a>                      <span class="at">method =</span> <span class="st">"FE"</span>)</span>
+<span id="cb46-7"><a href=""></a></span>
+<span id="cb46-8"><a href=""></a><span class="co"># Display results of PEESE test</span></span>
+<span id="cb46-9"><a href=""></a>PEESE <span class="sc">|&gt;</span> </span>
+<span id="cb46-10"><a href=""></a>  broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb46-11"><a href=""></a>  <span class="fu">select</span>(<span class="sc">-</span>type) <span class="sc">|&gt;</span> </span>
+<span id="cb46-12"><a href=""></a>  <span class="fu">flextable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="tabwid"><style>.cl-d78bb72a{}.cl-d785860c{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-d7881354{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-d788135e{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-d7882f4c{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d7882f56{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d7882f60{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d7882f61{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d7882f6a{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d7882f6b{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-d78bb72a"><thead><tr style="overflow-wrap:break-word;"><th class="cl-d7882f4c"><p class="cl-d7881354"><span class="cl-d785860c">term</span></p></th><th class="cl-d7882f56"><p class="cl-d788135e"><span class="cl-d785860c">estimate</span></p></th><th class="cl-d7882f56"><p class="cl-d788135e"><span class="cl-d785860c">std.error</span></p></th><th class="cl-d7882f56"><p class="cl-d788135e"><span class="cl-d785860c">statistic</span></p></th><th class="cl-d7882f56"><p class="cl-d788135e"><span class="cl-d785860c">p.value</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-d7882f60"><p class="cl-d7881354"><span class="cl-d785860c">intercept</span></p></td><td class="cl-d7882f61"><p class="cl-d788135e"><span class="cl-d785860c">0.3264256</span></p></td><td class="cl-d7882f61"><p class="cl-d788135e"><span class="cl-d785860c">0.08726409</span></p></td><td class="cl-d7882f61"><p class="cl-d788135e"><span class="cl-d785860c">3.740664</span></p></td><td class="cl-d7882f61"><p class="cl-d788135e"><span class="cl-d785860c">0.000183535</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d7882f6a"><p class="cl-d7881354"><span class="cl-d785860c">I(se^2)</span></p></td><td class="cl-d7882f6b"><p class="cl-d788135e"><span class="cl-d785860c">2.9353984</span></p></td><td class="cl-d7882f6b"><p class="cl-d788135e"><span class="cl-d785860c">0.98398611</span></p></td><td class="cl-d7882f6b"><p class="cl-d788135e"><span class="cl-d785860c">2.983171</span></p></td><td class="cl-d7882f6b"><p class="cl-d788135e"><span class="cl-d785860c">0.002852790</span></p></td></tr></tbody></table></div>
+<div class="tabwid"><style>.cl-26de65dc{}.cl-26d915c8{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-26db4d34{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-26db4d35{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-26db68b4{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26db68be{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26db68bf{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26db68c8{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26db68c9{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-26db68d2{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-26de65dc"><thead><tr style="overflow-wrap:break-word;"><th class="cl-26db68b4"><p class="cl-26db4d34"><span class="cl-26d915c8">term</span></p></th><th class="cl-26db68be"><p class="cl-26db4d35"><span class="cl-26d915c8">estimate</span></p></th><th class="cl-26db68be"><p class="cl-26db4d35"><span class="cl-26d915c8">std.error</span></p></th><th class="cl-26db68be"><p class="cl-26db4d35"><span class="cl-26d915c8">statistic</span></p></th><th class="cl-26db68be"><p class="cl-26db4d35"><span class="cl-26d915c8">p.value</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-26db68bf"><p class="cl-26db4d34"><span class="cl-26d915c8">intercept</span></p></td><td class="cl-26db68c8"><p class="cl-26db4d35"><span class="cl-26d915c8">0.3264256</span></p></td><td class="cl-26db68c8"><p class="cl-26db4d35"><span class="cl-26d915c8">0.08726409</span></p></td><td class="cl-26db68c8"><p class="cl-26db4d35"><span class="cl-26d915c8">3.740664</span></p></td><td class="cl-26db68c8"><p class="cl-26db4d35"><span class="cl-26d915c8">0.000183535</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-26db68c9"><p class="cl-26db4d34"><span class="cl-26d915c8">I(se^2)</span></p></td><td class="cl-26db68d2"><p class="cl-26db4d35"><span class="cl-26d915c8">2.9353984</span></p></td><td class="cl-26db68d2"><p class="cl-26db4d35"><span class="cl-26d915c8">0.98398611</span></p></td><td class="cl-26db68d2"><p class="cl-26db4d35"><span class="cl-26d915c8">2.983171</span></p></td><td class="cl-26db68d2"><p class="cl-26db4d35"><span class="cl-26d915c8">0.002852790</span></p></td></tr></tbody></table></div>
 </div>
 </div>
 </section>
@@ -1151,12 +1200,21 @@ Right-skewness test     0.046 -3.074 0.001 -2.669 0.004
 Flatness test           0.765  0.579 0.719  3.703 1.000</code></pre>
 </div>
 </div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-26-1.png" width="960" class="r-stretch"></section>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-27-1.png" width="960" class="r-stretch"></section>
 <section id="interpreting-the-results-of-the-pcurve-method" class="slide level2">
 <h2>Interpreting the results of the <code>pcurve</code> method</h2>
 <ul>
 <li><p>Evidential value present: The right-skewness test is significant for the half p-curve (p&lt; 0.05) or the p-value of the right-skewness test is &lt;0.1 for both the half and full curve.</p></li>
 <li><p>Evidential value absent or inadequate: The flatness test is significant with p&lt;0.05 for the full curve or the flatness test for the half curve and the binomial test are p&lt;0.1.</p></li>
+</ul>
+</section>
+<section id="limitations-of-bias-detection-tests" class="slide level2">
+<h2>Limitations of bias-detection tests</h2>
+<ul>
+<li>All tests have <strong>limitations</strong> and should not be interpreted in isolation.</li>
+<li>Their performance can depend on the <strong>number of studies</strong>, the <strong>sample sizes of the individual studies</strong>, <strong>between-study heterogeneity</strong>, and assumptions about the underlying publication bias process.</li>
+<li>A non-significant test does not necessarily indicate the <strong>absence of publication bias</strong>, and a significant test does not necessarily prove that publication bias is present.</li>
+<li>The best approach is to use <strong>triangulation</strong>: apply several bias-detection methods and consider whether they provide a consistent results</li>
 </ul>
 </section>
 <section id="the-assumption-of-independent-effect-sizes" class="slide level2">
@@ -1251,7 +1309,6 @@ Figure&nbsp;7: Extreme effect sizes can have a <strong>disproportionate influenc
 <p>Correct ES calculation: <span class="math display">\[d_s = \frac{\bar{x}_1 - \bar{x}_2}{SD} = \frac{14.4 - 13.8}{1.3} = 0.46\]</span></p>
 <p>Incorrect ES calculation: <span class="math display">\[SEM = \frac{SD}{\sqrt{N}}\]</span></p>
 <p><span class="math display">\[d_s = \frac{14.4 - 13.8}{SEM}  = \frac{14.4 - 13.8}{1.3 /\sqrt{40}} = 2.92\]</span></p>
-<p>Using SEM instead of SD changes the effect size from about 0.46 to 2.92, making the study appear to have an enormous effect</p>
 </section>
 <section id="consequences-for-the-meta-analysis" class="slide level2">
 <h2>Consequences for the meta-analysis</h2>
@@ -1267,6 +1324,13 @@ Figure&nbsp;8: An incorrectly calculated effect size can upwardly bias the poole
 </figure>
 </div>
 </div>
+</section>
+<section id="further-resources" class="slide level2">
+<h2>Further resources</h2>
+<ul>
+<li><p>Chapters from 3 to 9 from [Doing a meta-analysis in R](<a href="https://doing-meta.guide" class="uri">https://doing-meta.guide</a>)</p></li>
+<li><p>Chapters 11 and 12 from [Improving Your Statistical inferences](<a href="https://lakens.github.io/statistical_inferences/12-bias.html" class="uri">https://lakens.github.io/statistical_inferences/12-bias.html</a>)</p></li>
+</ul>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
