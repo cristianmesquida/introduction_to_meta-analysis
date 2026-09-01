@@ -20,7 +20,7 @@ library(flextable)
 library(dplyr)
 library(ggplot2)
 
-dat <- metadat::dat.baskerville2012
+dat <- dat.baskerville2012
 ```
 
 # Lecture objective
@@ -41,9 +41,11 @@ By the end of this lecture, you should be able to interpret:
 
 - Suppose you are a researcher working for a **government ministry**
 
-- You need to gather evidence to make an informed decision about the e**fficacy of an intervention**
+- You need to gather evidence to make an informed decision about the **efficacy of an intervention**
 
 - You conduct a **systematic search of the published literature** to identify all relevant studies
+
+- But...which ones?
 
 ## Which studies and effect size should we select?
 
@@ -82,40 +84,35 @@ How do we make sure we select similar studies?
 
 - **Outcome**: What kind of outcome do studies have to measure? Systolic blood pressure? Dyastolic blood pressure? Mortality?
 
-- **Study design:** Which study designs are eligible?
-
-  - Randomized Controlled Trials (RCTs), pre-post, etc.
-
-  <!-- -->
-
-  - Different study designs may require **different effect-size calculations**
+- **Study design:** Which study designs are eligible? Randomized Controlled Trials (RCTs), pre-post, etc. Different study designs require **different effect-size calculations**
 :::
 
 # Effect sizes
 
 ## What do we need to conduct a meta-analysis?
 
-- Effect size for each study
+- Effect size (or the information to compute it) for each study
 
-  - Standardized (e.g., Cohen's $d$ ,$r$
+  - Standardized (e.g., Cohen's $d$ or Pearson's $r$)
 
   - Non-standardized (mean difference, odds ratio ($OR$)
 
 - Sampling variance (or standard error) of each effect size
 
-- The formulas for calcualting effect sizes and their variances depend on:
+## Types of effect sizes
 
-  - The type of effect size
+- The formulas for calculating effect sizes and their variances depend on:
 
+  - The type of effect size: $d_s$, $d_z$, $r$, etc.
   - The study design (e.g., within-subject design, between-subject, split-plot)
 
 - See Jané et al. [-@jane] for a guide to calculating effect and variances across different study designs
 
 ## Calculating Cohen's $d_s$ effect size (between-subject)
 
-- Standardized effect size (Cohen's $d_s$): $$  d_s = \frac{ \bar{x}_1 - \bar{x}_2 }{SD_{pooled}}$$
+Standardized effect size (Cohen's $d_s$): $$  d_s = \frac{ \bar{x}_1 - \bar{x}_2 }{SD_{pooled}}$$
 
-- Cohen's $d_s$ variance: $$V_d = \frac{ n_1 + n_2 }{n_1n_2} + \frac{ d^2 }{2(n_1n_2)}$$
+Cohen's $d_s$ variance: $$V_d = \frac{ n_1 + n_2 }{n_1n_2} + \frac{ d^2 }{2(n_1n_2)}$$
 
 ## Raw data
 
@@ -130,10 +127,31 @@ How do we make sure we select similar studies?
 | study_3  | 8.7      | 2.8    | 60    | 7.9      | 2.6    | 58    |
 | study_4  | 21.3     | 5.2    | 35    | 18.6     | 4.8    | 37    |
 
-## Calculating effect size using `meta` {#sec-overview}
+## Calculating effect sizes {#sec-overview}
+
+We can calculate effect sizes using:
+
+- Functions from the **`meta`** package (see @fig-fig1).
+
+  > Note that these functions calculate the effect sizes **and** perform the meta-analysis.
+
+```{r}
+#| echo: TRUE
+#| eval: FALSE
+
+metacont(
+  n.e, mean.e, sd.e,
+  n.c, mean.c, sd.c,
+  data = ...
+)
+```
+
+- The `escalc()` function from the **`metafor`** package, which calculates effect sizes without fitting a meta-analytic model.
+
+## Functions from `meta`
 
 ::: {#meta-fig5}
-![Overview of functions for calculating different types of effect sizes using the `meta` package. Obtained from Harrer et al. [-@harrer2021]](images/fig5.png){#fig-fig1}
+![Overview of functions for calculating different types of effect sizes using the `meta` package. Obtained from Harrer et al. [-@harrer2021]](images/fig5.png){#fig-fig1 width="700"}
 :::
 
 # The basics of Meta-analysis
@@ -235,11 +253,13 @@ where $\theta_k$ is the study effect size, $\theta$ is the true effect size and 
 
 - A FE meta-analysis simply use a weighted average of all studies to calculate the pooled effect size
 
-- The weight of an individual study ($w_k$) is calculated as follows: $$w_k = \frac{1}{SE^2_k}$$
+- The weight of an individual study ($w_k$) is calculated as:
+
+  $$w_k = \frac{1}{SE^2_k}$$
+
+- The pooled effect size ($\widehat{\theta}$) is calculated as:
 
   $$\widehat{\theta} = \frac{\sum_{k=1}^{K}\widehat{\theta_k} w_k}{\sum_{k=1}^{K} w_k}$$
-
-- Multiply each study’s effect size $\widehat{\theta}$ with its corresponding weight $w_k$, sum the results across all studies $k$ in our meta-analysis, and then divide by the sum of all the individual weights $w_k$
 
 ## Random-Effect (RE) or two-level meta-analysis
 
@@ -261,15 +281,13 @@ where $\theta_k$ is the study effect size, $\theta_k$ is the true effect size of
 
 where $\theta_k$ is the study effect size, $\mu$ is the mean of the distribution of true effect sizes and $\zeta_k$ is the deviation of study $k$'s true effect from $\mu$
 
-The variance of the distribution of effect sizes is denoted by $\tau_2$ and represents between-study heterogeneity
-
 ## RE Meta-analysis
 
 - Combining the two levels gives: $$  \widehat{\theta_k} = \mu + \zeta_k + \epsilon_k$$
 
 - The model therefore separates sampling error from between-study variation
 
-- This second source of variation allows us to quantidy between-study heterogeneity
+- This second source of variation allows us to quantify between-study heterogeneity
 
 ## What is between-study heterogeneity?
 
@@ -302,14 +320,12 @@ The variance of the distribution of effect sizes is denoted by $\tau_2$ and repr
 
 ## First we need a dataset
 
-- The **`metadat`** package provides a collection of datasets for conducting meta-analyses
-
-- We will use the **`dat.baskerville2012`** dataset
+We will use the **`metdat::dat.baskerville2012`** dataset. It contains 23 studies on the effectiveness of practice facilitation interventions within the primary care practice setting. The meta-analysis is available [here](https://pmc.ncbi.nlm.nih.gov/articles/PMC3262473/)
 
 ```{r}
 #| echo: TRUE
 # Load dataset
-dat <- metadat::dat.baskerville2012 
+dat <- dat.baskerville2012 
 
 # Display first 5 rows as a table and color the last two columns
 dat |> 
@@ -364,6 +380,7 @@ meta$pval.random  # P-value of the Z-test
 ## Forest plot
 
 ```{r}
+#| echo: TRUE
 forest(meta)
 ```
 
@@ -697,6 +714,8 @@ legend(x = 1.2,
 
 - The corrected effect corresponds to a Cohen's $d_s$ = `r round(trim$TE.random, 2)`. This is still significant, but lower than the effect of $d_s$ =`r round(meta$TE.random, 2)` initially calculated for `meta`
 
+- An important caveat pertaining to the trim-and-fill method is that it does not produce reliable results when the between-study heterogeneity is large
+
 ## Egger's regression test
 
 ```{r}
@@ -789,16 +808,11 @@ pcurve$pcurveResults
 
 - Evidential value absent or inadequate: The flatness test is significant with p\<0.05 for the full curve or the flatness test for the half curve and the binomial test are p\<0.1.
 
-# Limitations of bias-detection tests
+## Limitations of bias-detection tests
 
-- All bias-detection tests have **limitations** and should not be interpreted in isolation.
-
-<!-- -->
-
+- All tests have **limitations** and should not be interpreted in isolation.
 - Their performance can depend on the **number of studies**, the **sample sizes of the individual studies**, **between-study heterogeneity**, and assumptions about the underlying publication bias process.
-
 - A non-significant test does not necessarily indicate the **absence of publication bias**, and a significant test does not necessarily prove that publication bias is present.
-
 - The best approach is to use **triangulation**: apply several bias-detection methods and consider whether they provide a consistent results
 
 ## The assumption of independent effect sizes
@@ -861,12 +875,16 @@ Incorrect ES calculation: $$SEM = \frac{SD}{\sqrt{N}}$$
 
 $$d_s = \frac{14.4 - 13.8}{SEM}  = \frac{14.4 - 13.8}{1.3 /\sqrt{40}} = 2.92$$
 
-Using SEM instead of SD changes the effect size from about 0.46 to 2.92, making the study appear to have an enormous effect
-
 ## Consequences for the meta-analysis
 
 ::: {meta-outlier}
 ![An incorrectly calculated effect size can upwardly bias the pooled effect size](images/outlier2.png){#fig-outlier2 width="100%"}
 :::
+
+## Further resources
+
+- Chapters from 3 to 9 from \[Doing a meta-analysis in R\](<https://doing-meta.guide>)
+
+- Chapters 11 and 12 from \[Improving Your Statistical inferences\](<https://lakens.github.io/statistical_inferences/12-bias.html>)
 
 ## References
