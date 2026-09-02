@@ -25,11 +25,9 @@ dat <- dat.baskerville2012
 
 # Scan QR code for slides
 
-<div style="text-align: center;">
-
+::: {style="text-align: center;"}
 ![](images/qr_code.png){width="400"}
-
-</div>
+:::
 
 # Lecture objective
 
@@ -421,7 +419,7 @@ meta$df.Q.  # degrees of freedom
 meta$pval.Q # p-value
 ```
 
-> The $Q$-test was significant, $Q$(`r meta$df.Q`) = `r round(meta$Q, 2)`, $p$ = `r format.pval(meta$pval.Q, digits = 3, scientific = FALSE)`, indicating that the observed variation in effect sizes is greater than would be expected from sampling error alone.
+> The $Q$-test was nont significant, $Q$(`r meta$df.Q`) = `r round(meta$Q, 2)`, $p$ = `r format.pval(meta$pval.Q, digits = 3, scientific = FALSE)`. Thus, we fail to reject the null hypothesis that the observed variation in effect sizes can be attributed to sampling error alone.
 
 ## $I^2$
 
@@ -743,7 +741,7 @@ legend(x = 1.2,
                   method.bias = "linreg"))
 ```
 
-> The intercept was `r round(egger$intercept, 2)`, which was significantly different from zero, $t$ = `r round(egger$statistic, 2)`, $p$ = `r format.pval(egger$pval, digits = 3, scientific = FALSE)`. This indicates funnel plot asymmetry, consistent with small-study effects. 
+> The intercept was `r round(egger$intercept, 2)`, which was significantly different from zero, $t$ = `r round(egger$statistic, 2)`, $p$ = `r format.pval(egger$pval, digits = 3, scientific = FALSE)`. This indicates funnel plot asymmetry, consistent with small-study effects.
 
 ## PET-PEESE
 
@@ -765,11 +763,8 @@ legend(x = 1.2,
 #| echo: TRUE
 
 # Perform PET test
-PET <- metafor::rma(yi = smd, 
-                    sei = se, 
-                    mods = ~se, 
-                    data = dat, 
-                    method = "FE")
+PET <- metafor::rma(yi = smd, sei = se, mods = ~se, 
+                    data = dat, method = "FE")
 
 # Store results
 res_pet <- PET |> 
@@ -901,8 +896,8 @@ $$d_s = \frac{14.4 - 13.8}{SEM}  = \frac{14.4 - 13.8}{1.3 /\sqrt{40}} = 2.92$$
 
 ## Further resources
 
-- Chapters from 3 to 9 from \[Doing a meta-analysis in R\](<https://doing-meta.guide>)
+- Chapters from 3 to 9 from [Doing a meta-analysis in R](https://doing-meta.guide)
 
-- Chapters 11 and 12 from \[Improving Your Statistical inferences\](<https://lakens.github.io/statistical_inferences/12-bias.html>)
+- Chapters 11 and 12 from [Improving Your Statistical inferences](https://lakens.github.io/statistical_inferences/12-bias.html)
 
 ## References
