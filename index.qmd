@@ -728,6 +728,14 @@ legend(x = 1.2,
 
 ## Egger's regression test
 
+- Egger's rest can only identify small-study effects
+
+- When using Egger’s test, however, we are not interested in the size and significance of the regression coefficient ($\beta_1$), but in the intercept ($\beta_0$)
+
+- If $\beta_0$ differs significantly from zero, Egger’s test indicates funnel plot asymmetry
+
+## Egger's regression test
+
 ```{r}
 #| echo: TRUE
 
@@ -735,7 +743,7 @@ legend(x = 1.2,
                   method.bias = "linreg"))
 ```
 
-> The intercept was `r round(egger$intercept, 2)`, which was significantly different from zero, $t$ = `r round(egger$statistic, 2)`, $p$ = `r format.pval(egger$pval, digits = 3, scientific = FALSE)`. This indicates funnel plot asymmetry, consistent with small-study effects. However, this pattern does not necessarily indicate publication bias, as funnel plot asymmetry can have other causes.
+> The intercept was `r round(egger$intercept, 2)`, which was significantly different from zero, $t$ = `r round(egger$statistic, 2)`, $p$ = `r format.pval(egger$pval, digits = 3, scientific = FALSE)`. This indicates funnel plot asymmetry, consistent with small-study effects. 
 
 ## PET-PEESE
 
