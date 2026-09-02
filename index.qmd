@@ -217,7 +217,9 @@ ggplot(dat, aes(x = d, y = study)) +
 
 $$\theta = \widehat{\theta}_k + \epsilon_k$$ where *k* refers to individual studies and $\epsilon_k$ is the sampling error
 
-- It is therefore desirable that the effect size estimate $\widehat{\theta}_k$ of study *k* is as close as possible to the true effect size, and that $\epsilon_k$ is minimal.
+## Effect size estimate and sampling error
+
+It is therefore desirable that the effect size estimate $\widehat{\theta}_k$ of study *k* is as close as possible to the true effect size, and that $\epsilon_k$ is minimal.
 
 ## Sampling error ($\epsilon$)
 
@@ -328,7 +330,7 @@ where $\theta_k$ is the study effect size, $\mu$ is the mean of the distribution
 
 ## First we need a dataset
 
-We will use the **`metdat::dat.baskerville2012`** dataset. It contains 23 studies on the effectiveness of practice facilitation interventions within the primary care practice setting. The meta-analysis is available [here](https://pmc.ncbi.nlm.nih.gov/articles/PMC3262473/)
+We will use the **`metadat::dat.baskerville2012`** dataset. It contains 23 studies on the effectiveness of practice facilitation interventions within the primary care practice setting. The meta-analysis is available [here](https://pmc.ncbi.nlm.nih.gov/articles/PMC3262473/)
 
 ```{r}
 #| echo: TRUE
